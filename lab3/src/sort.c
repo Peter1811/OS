@@ -50,13 +50,12 @@ void* merge_sort_thread(void* arg){
         merge(tsk->l, mid, tsk->r);
     }
 }
-int main() {
+int main(int argv, char *argc []) {
     struct tsk* control_param;
     int size, number_threads;
     printf("Number elements:");
     scanf("%d",&size);
-    printf("Number threads:");
-    scanf("%d",&number_threads);
+    number_threads = *argc[1];
     a = malloc(sizeof(int) * size);
     for (int i=0;i<size;i++){
         scanf("%d",&a[i]);
