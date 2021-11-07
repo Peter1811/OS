@@ -1,5 +1,6 @@
 ## Imput format:
 1 string - number of entered strings: N.
+
 Next N strings - any strings
 
 ## Output format:
