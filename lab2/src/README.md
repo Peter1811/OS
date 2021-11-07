@@ -5,3 +5,16 @@ Next N strings - any strings
 
 ## Output format:
 N strings - N strings from input, where spaces replaced by '_' and all letters in high register. 
+
+## Example:
+
+```
+3
+Hello world!!!
+Gshgfh dgfhdgfh h       
+fghdf dfhdgfh d fghgdf
+
+HELLO_WORLD!!!
+GSHGFH_DGFHGFH_h______
+FGHDF_DFHDGFH_D_FGHGDF
+```
