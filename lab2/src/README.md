@@ -1,4 +1,6 @@
-## Imput format:
+To launch programm, compile file main.cpp
+ 
+## Input format:
 1 string - number of entered strings: N.
 
 Next N strings - any strings
