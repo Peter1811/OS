@@ -13,9 +13,7 @@
 
 void change_spaces(char* src, int size)
 {
-    char* res = malloc(size*sizeof(char));
     int j = 0;
-    bool flag = true;
     for(int i = 0; i < size ; ++i) {
     if(src[i] == ' ')
     src[i] = '_';
@@ -59,7 +57,8 @@ int main(int argc, char* argv[])
         exit(-1);
     }
 
-    char buff[statbuf.st_size];
+    // char buff[statbuf.st_size];
+    char* buff = (char*) malloc(sizeof(char)*statbuf.st_size);
     if(read(fd_0, buff, statbuf.st_size) != statbuf.st_size)
     {
         printf("READ ERROR\n");
@@ -101,13 +100,13 @@ int main(int argc, char* argv[])
                 printf("MUNMAP ERROR\n");
                 exit(-1);
             }
-            sleep(2);
+            // sleep(2);
             sem_post(&semaphore);           
         }
         else if(pid_1 == 0)
         { //Child2
             sem_wait(&semaphore);
-            sleep(1);
+            // sleep(1);
             src = (char*)mmap(0, statbuf.st_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd_1, 0);
             if(src == MAP_FAILED)
             {
@@ -120,7 +119,7 @@ int main(int argc, char* argv[])
                 printf("MUNMAP ERROR\n");
                 exit(-1);
             }
-            sleep(1);
+            // sleep(1);
             sem_post(&semaphore);   
         }
         else
@@ -132,7 +131,7 @@ int main(int argc, char* argv[])
     else if (pid_0 == 0)
     { //Clind1
         sem_wait(&semaphore);
-        sleep(1);
+        // sleep(1);
         src = (char*)mmap(0, statbuf.st_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd_1, 0);
         if(src == MAP_FAILED)
         {
@@ -145,7 +144,7 @@ int main(int argc, char* argv[])
             printf("MUNMAP ERROR\n");
             exit(-1);
         }
-        sleep(1);
+        // sleep(1);
         sem_post(&semaphore);
     }
     else
@@ -157,5 +156,6 @@ int main(int argc, char* argv[])
     sem_destroy(&semaphore);
     close(fd_0);
     close(fd_1);
+    free(buff);
     return 0;
 }
