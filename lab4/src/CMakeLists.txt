@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
-project(lab4)
+project(src)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 20)
 
-add_executable(lab4 main.c)
+add_executable(src main.cpp)
