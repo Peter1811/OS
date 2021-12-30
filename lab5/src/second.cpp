@@ -1,8 +1,5 @@
 #include <cmath>
 
-// extern "C" float Pi (int K);
-// extern "C" float Square (float A, float B);
-
 float Pi(int K) {
     if (K < 0) return -1;
     float pi = 1.0;
