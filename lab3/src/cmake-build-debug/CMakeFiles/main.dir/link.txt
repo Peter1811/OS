@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/main.dir/my_prog.cpp.o  -o main  -lpthread 
